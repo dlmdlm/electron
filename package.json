@@ -1,5 +1,5 @@
 {
-  "name": "electron-quick-start",
+  "name": "SentryDemos",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
@@ -7,7 +7,7 @@
     "start": "electron .",
     "build": "webpack -p"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/dlmdlm/electron",
   "keywords": [
     "Electron",
     "quick",
@@ -20,16 +20,20 @@
   "devDependencies": {
     "@sentry/webpack-plugin": "^1.18.8",
     "electron": "^4.1.4",
+    "electron-builder": "^24.4.0",
     "electron-download": "^4.1.1",
     "eslint": "^8.11.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@sentry/cli": "^1.73.2",
+    "@sentry/cli": "^1.75.2",
     "@sentry/electron": "^3.0.4",
     "@sentry/tracing": "^6.18.2",
     "axios": "^0.19.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "jquery": "^3.4.1"
   }
 }

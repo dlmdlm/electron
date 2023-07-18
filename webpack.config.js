@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     new SentryWebpackPlugin({
       include: '.',
-      release: 'electron-quick-start1.0.0',
+      release: 'SentryDemos1.0.0',
       ignoreFile: '.sentrycliignore',
       ignore: ['node_modules', 'webpack.config.js'],
       configFile: 'sentry.properties'

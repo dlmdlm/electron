@@ -38,3 +38,7 @@ const versions = {
     node: process.versions.node,
 };
 console.log('VERSIONS', versions)
+
+module.exports = {
+    notAFunctionError, syntaxError, errorRenderer, versions
+}

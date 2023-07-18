@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require('cors');
+const path = require('path');
+
 const Sentry = require('@sentry/node');
 const Tracing = require('@sentry/tracing');
 const { SENTRY_DSN } = require('./constants');
+const common = require('./index')
 
 const app = express()
 const port = 3124
@@ -57,27 +60,30 @@ app.all('*', function (req, res, next) {
   next();
 });
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile(path.join(__dirname+'/index.html'));
 })
-
 app.get('/capture-message', function (req, res) {
-  Sentry.captureMessage('Custom Message');
+  Sentry.captureMessage('Custom Message', { extra: { port, versions: common.versions } });
   setTimeout(() => { res.send('Success'); }, 500);
 });
 
+app.get('/syntax', function (req, res) {
+  common.syntaxError();
+});
 app.get('/unhandled', function (req, res) {
-  let obj = {};
-  obj.doesNotExist();
+  common.notAFunctionError();
+});
+app.get('/renderer', function (req, res) {
+  common.errorRenderer();
 });
 
 app.get('/handled', function (req, res) {
   try {
-      let obj = {};
-      obj.doesNotExist();
-      res.send('Success');
+    common.notAFunctionError();
+    res.send('Success');
   } catch (error) {
-      Sentry.captureException(error);
-      res.status(500).send("Something broke");
+    Sentry.captureException(error);
+    res.status(500).send("Something broke");
   }
 });
 app.listen(port, () => {
@@ -85,7 +91,8 @@ app.listen(port, () => {
 })
 
 app.use(Sentry.Handlers.errorHandler());
-
+app.use(express.static(__dirname + '/'));
+app.use(express.static(path.resolve(__dirname, '..')));
 app.listen(process.env.PORT || port, function () {
   console.log(`CORS-enabled web server listening on port ${port}`);
 });

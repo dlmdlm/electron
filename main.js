@@ -2,7 +2,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 
 require('./sentry');
-require('./server');
+require('./src/server');
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -31,6 +31,7 @@ function createWindow() {
     onlineStatusWindow = null
   })
 }
+app.commandLine.appendSwitch('charset', 'utf-8');
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

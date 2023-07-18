@@ -23,36 +23,36 @@
         <div class="center">
           <form>
             <div class="form-group">
-              <input id="email" type="text" type="email" class="form-control" placeholder="Enter email">
+              <input id="email" type="text" type="email" class="form-control" placeholder="输入电子邮件">
             </div>
             <button id="submit-email" type="submit" class="btn btn-primary" onclick="return false">Submit</button>
           </form>
         </div>
 
-        <h2 id="guest-email">Set Your Email Above</h2>
+        <h2 id="guest-email">在上面设置您的电子邮件</h2>
 
         <ul class="center list-group">
           <li class="list-group-item list-group-item-danger">
-            <h3>NATIVE CRASH</h3>
+            <h3>程序崩溃</h3>
           </li>
           <li class="list-group-item" onclick="crashMain()">
-            <h3>Main Process</h3>
-            <p>process.crash() in the main process</p>
+            <h3>主要流程</h3>
+            <p>进程.崩溃在主进程中</p>
           </li>
           <li class="list-group-item" onclick="crashRenderer()">
-            <h3>Renderer Process</h3>
-            <p>crash from exception thrown within renderer process</p>
+            <h3>渲染器进程</h3>
+            <p>渲染器进程</p>
           </li>
           <li class="list-group-item list-group-item-danger">
               <h3>JAVASCRIPT</h3>
           </li>
           <li class="list-group-item" onclick="notAFunctionError()">
-            <h3>TypeError</h3>
-            <p>"obj.attributeInvalid is not a function"</p>
+            <h3>类型错误</h3>
+            <p>"obj.attributeInvalid 不是函数"</p>
           </li>
           <li class="list-group-item" onclick="syntaxError()">
-            <h3>SyntaxError</h3>
-            <p>"Unexpected identifier"</p>
+            <h3>语法错误</h3>
+            <p>"意外的标识符"</p>
           </li>
         </ul>
         <footer class="footer">
